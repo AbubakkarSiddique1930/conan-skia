@@ -733,7 +733,7 @@ class ConanSkia(ConanFile):
 
         copy(self, "*.h", source_folder_include, join(package_folder_include, "include"))
 
-        for mod in ["skottie", "skresource", "sksg", "skshaper", "skunicode", "svg"]:
+        for mod in ["skottie", "skresource", "sksg", "skshaper", "skunicode", "svg", "pathops"]:
             copy(self, "*.h", join(source_folder_modules, mod, "include"), join(package_folder_include_modules, mod, "include"))
 
         # skcms doesn't have include folder for some reason.
@@ -907,7 +907,8 @@ class ConanSkia(ConanFile):
         # component: pathkit
 
         if not self.options.shared:
-            self.cpp_info.libs += ["pathkit"]
+            self.cpp_info.libs += ["pathops"]
+            # self.cpp_info.libs += ["pathkit"]
 
         # component: skcms
 
